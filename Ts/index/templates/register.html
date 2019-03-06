@@ -1,12 +1,12 @@
 {% extends 'index.html' %}
 {% block style %}
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
 {% endblock %}
 {% block nav%}
     <div class="group">
         <form action="login.html" class="login">
-            <h3>登录</h3>
+            <h3>注册</h3>
             <div class='form-group'>
                 <label for="username" class="lb1">用户名:</label>
                 <input type="text" class="form-control" id="username" placeholder="用户名">
@@ -15,9 +15,13 @@
                 <label for="upwd" class="lb2">密 码:</label>
                 <input type="password" class="form-control" id="upwd" placeholder="密码">
             </div>
+            <div class='form-group'>
+                <label for="upwd2" class="lb2">确认密码:</label>
+                <input type="password" class="form-control" id="upwd2" placeholder="密码">
+            </div>
             <div class="form-group">
-                <a href="/login/" class="btn btn-primary btn1">登录</a>
-                <a href="/register/" class="btn btn-default btn2">注册</a>
+                <a href="/register/" class="btn btn-primary btn1">注册</a>
+                <a href="#" class="btn btn-default btn2">取消</a>
             </div>
         </form>
     </div>

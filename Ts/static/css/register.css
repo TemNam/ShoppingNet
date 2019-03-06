@@ -11,10 +11,10 @@ input[type=text],input[type=password]{
 .login{
     margin:180px auto;
     width: 300px;
-    height: 260px;
-    background: rgba(255,180,100,.3);
+    height: 340px;
+     background: rgba(255,180,100,.3);
+    color:#fff;
     border-radius: 3px;
-    color:rgba(255,255,255,.8);
 }
 .lb1,.lb2{
     margin-left:28px;
