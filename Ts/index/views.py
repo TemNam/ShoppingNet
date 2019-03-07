@@ -10,7 +10,7 @@ from .models import *
 def index_(request):
     return render(request, 'index.html')
 
-def login_(request):
+def login_(request): #登录用户
     if request.method == 'GET':
         url = request.META.get('HTTP_REFERER', '/')
         request.session['url'] = url
@@ -23,12 +23,15 @@ def login_(request):
         if user:
             auth.login(request, user)
             url = request.session['url']
+            print(url)
+            if url == 'http://127.0.0.1:8000/register/':
+                return redirect('/')
             return redirect(url)
         else:
             params = {'msg': '登录失败'}
             return render(request, 'login.html', locals())
 
-def register_(request):
+def register_(request): #注册用户
     if request.method == 'GET':
         return render(request, 'register.html')
     else:
@@ -44,9 +47,22 @@ def register_(request):
             params = {'msg': '注册失败'}
             return render(request, 'register.html', locals())
 
-def logout_(request):
+def logout_(request): #退出账户
     auth.logout(request)
     return redirect('/login/')
 
-def selfinfo_(request):
+def selfinfo_(request, id):
+    print(id)
     return HttpResponse('个人主页')
+
+def queryName_(request): #ajax请求,判断用户名是否存在
+    if request.method == 'POST':
+        uname = request.POST['username']
+        user = UserInfo.objects.filter(username=uname)
+        if uname != '':
+            if not user:
+                return HttpResponse('ok')
+            else:
+                return HttpResponse('用户已存在')
+        else:
+            return HttpResponse('用户名不能为空')

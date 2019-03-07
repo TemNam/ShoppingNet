@@ -4,13 +4,15 @@
     <link rel="stylesheet" href="{% static 'css/register.css' %}">
 {% endblock %}
 {% block nav%}
-    <div class="group">
+    <div class="group" id="app">
         <form action="/register/" class="login" method="post">
             {% csrf_token %}
             <h3>注册</h3>
             <div class='form-group'>
                 <label for="username" class="lb1">用户名:</label>
-                <input type="text" class="form-control" id="username" placeholder="用户名" name="username">
+                <span v-text="massege" :style="style"></span>
+                <input type="text" class="form-control" id="username"
+                       placeholder="用户名" name="username" @blur="query" v-model="name">
             </div>
             <div class='form-group'>
                 <label for="upwd" class="lb2">密 码:</label>
@@ -29,4 +31,30 @@
             {% endif %}
         </form>
     </div>
+    <script>
+        Vue.http.headers.common['X-CSRFToken'] = $("input[name='csrfmiddlewaretoken']").val()
+        var vm = new Vue({
+            el: '#app',
+            data:{
+                name:'',
+                massege:'',
+                style:{
+                    color:'red'
+                },
+            },
+            methods:{
+                query:function(){
+                    console.log(this.name)
+                    this.$http.post('/queryName/', {username:this.name}, {emulateJSON:true}).then(function (data) {
+                        if(data.body == 'ok'){
+                            this.style = {color:'yellow', 'font-size':'14px','font-weight':'bold'}
+                        }else{
+                            this.style = {color:'red', 'font-size':'14px','font-weight':'bold'}
+                        }
+                        this.massege = data.body
+                    })
+                },
+            },
+        })
+    </script>
 {% endblock %}
