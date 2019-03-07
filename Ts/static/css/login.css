@@ -11,10 +11,11 @@ input[type=text],input[type=password]{
 .login{
     margin:180px auto;
     width: 300px;
-    height: 260px;
+    height: 270px;
     background: rgba(255,180,100,.3);
     border-radius: 3px;
     color:rgba(255,255,255,.8);
+    position: relative;
 }
 .lb1,.lb2{
     margin-left:28px;
@@ -30,5 +31,12 @@ input[type=text],input[type=password]{
 }
 h3{
     text-align: center;
-    padding-top:16px;
+    padding-top: 10px;
+}
+h3+p{
+    color:orangered;
+    left:120px;
+    position: absolute;
+    bottom: 0px;
+
 }

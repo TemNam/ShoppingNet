@@ -5,23 +5,24 @@
 {% endblock %}
 {% block nav%}
     <div class="group">
-        <form action="login.html" class="login">
+        <form action="/register/" class="login" method="post">
+            {% csrf_token %}
             <h3>注册</h3>
             <div class='form-group'>
                 <label for="username" class="lb1">用户名:</label>
-                <input type="text" class="form-control" id="username" placeholder="用户名">
+                <input type="text" class="form-control" id="username" placeholder="用户名" name="username">
             </div>
             <div class='form-group'>
                 <label for="upwd" class="lb2">密 码:</label>
-                <input type="password" class="form-control" id="upwd" placeholder="密码">
+                <input type="password" class="form-control" id="upwd" placeholder="密码" name="upwd1">
             </div>
             <div class='form-group'>
                 <label for="upwd2" class="lb2">确认密码:</label>
-                <input type="password" class="form-control" id="upwd2" placeholder="密码">
+                <input type="password" class="form-control" id="upwd2" placeholder="密码" name="upwd2">
             </div>
             <div class="form-group">
-                <a href="/register/" class="btn btn-primary btn1">注册</a>
-                <a href="#" class="btn btn-default btn2">取消</a>
+                <input type="submit" class="btn btn-primary btn1" value="注册">
+                <input type="reset" class="btn btn-default btn2" value="取消">
             </div>
         </form>
     </div>

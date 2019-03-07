@@ -72,8 +72,13 @@
             </button>
             </form>
            <ul class="nav navbar-nav navbar-right">
-                <li><a href="/login/">登录</a></li>
-                <li><a href="/register/">注册</a></li>
+               {% if request.user.username %}
+                    <li><a href="/self/">{{ request.user.username }}</a></li>
+                    <li><a href="/logout/">退出</a></li>
+               {% else %}
+                    <li><a href="/login/">登录</a></li>
+                    <li><a href="/register/">注册</a></li>
+               {% endif %}
                 <li>
                     <a href="#">联系我们</a>
                 </li>

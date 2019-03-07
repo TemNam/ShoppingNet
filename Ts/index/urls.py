@@ -19,7 +19,8 @@ from . import views
 
 
 urlpatterns = [
-    url(r'^login/', views.login),
-    url(r'^register/', views.register),
-    url(r'^$', views.index),
+    url(r'^login/', views.login_),
+    url(r'^register/', views.register_),
+    url(r'^logout/', views.logout_),
+    url(r'^$', views.index_),
 ]

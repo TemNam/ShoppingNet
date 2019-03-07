@@ -76,8 +76,12 @@ WSGI_APPLICATION = 'Ts.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'shopnet',
+        'USER': 'root',
+        'PASSWORD': '123456',
+        'HOST': 'localhost',
+        'PORT': 3306
     }
 }
 
@@ -120,3 +124,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+AUTH_USER_MODEL = 'index.UserInfo'
+LOGIN_URL = '/login/'
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
