@@ -41,10 +41,12 @@ def register_(request):
                 auth.login(request, user)
             return redirect('/')
         else:
-            params = {'msg': '登录失败'}
+            params = {'msg': '注册失败'}
             return render(request, 'register.html', locals())
-
 
 def logout_(request):
     auth.logout(request)
     return redirect('/login/')
+
+def selfinfo_(request):
+    return HttpResponse('个人主页')

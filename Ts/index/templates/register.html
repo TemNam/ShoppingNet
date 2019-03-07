@@ -24,6 +24,9 @@
                 <input type="submit" class="btn btn-primary btn1" value="注册">
                 <input type="reset" class="btn btn-default btn2" value="取消">
             </div>
+            {% if params %}
+                <p style="text-align: center;color:orangered;">{{ params.msg }}</p>
+            {% endif %}
         </form>
     </div>
 {% endblock %}
